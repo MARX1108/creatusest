@@ -44,6 +44,9 @@ const BlogPostCard = ({
               <Heading size="md">{title}</Heading>
             </LinkOverlay>
           </Link>
+          <Text color="gray.500" fontSize="sm">
+            {description}
+          </Text>
           <HStack
             divider={
               <Text mx={2} color="gray.500">
@@ -59,9 +62,7 @@ const BlogPostCard = ({
             </Text>
           </HStack>
         </VStack>
-        <Text color="gray.500" fontSize="sm">
-          {description}
-        </Text>
+
       </VStack>
     </LinkBox>
   );
