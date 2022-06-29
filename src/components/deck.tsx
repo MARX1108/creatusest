@@ -1,10 +1,10 @@
-import { Course } from "../types/course";
+import { Course } from "./types/course";
 import { VStack, Heading, List, ListItem, Button, Stack } from "@chakra-ui/react";
-import CourseCard from "../course-card";
+import CourseCard from "./course-card";
 import { useState } from "react";
-import BlogpostsSection from "../blogposts-section";
+import BlogpostsSection from "./blogposts-section";
 // import { BlogPost } from "../types/blog-post";
-import posts from "../../data/research.json"
+import posts from "../data/research.json"
 
 type Props = {
   courses: Course[];
@@ -20,23 +20,30 @@ type Tab = {
 const Tabs: Tab[] = [
   {
     // href: TWITTER_PROFILE,
-    label: "My Websites.",
+    label: "Websites",
     color: "twitter",
     lightColor: "rgba(29,161, 242,0.40)",
     textShadow: "2px 2px 7px rgba(29,161, 242,0.40)",
   },
   {
     // href: GITHUB_PROFILE,
-    label: "My Research.",
+    label: "Research",
     color: "Gray.900",
     lightColor: "rgba(0,0,0,0.40)",
     textShadow: "2px 2px 7px rgba(0,0,0,0.40)",
   },
   {
     // href: TWITCH_CHANNEL,
-    label: "My Design.",
+    label: "Design",
     color: "purple.500",
     lightColor: "rgba(128, 90, 213, 0.49)",
+    textShadow: "2px 2px 7px rgba(128, 90, 213, 0.49)",
+  },
+  {
+    // href: TWITCH_CHANNEL,
+    label: "Highlights",
+    color: "Gray.500",
+    lightColor: "rgba(0,0,0,0.40)",
     textShadow: "2px 2px 7px rgba(128, 90, 213, 0.49)",
   },
 ];
@@ -47,10 +54,7 @@ const Deck = ({ courses }: Props) => {
   return (
 
     <VStack as="section" alignItems="flex-start" w="full" spacing={4}>
-      {/* <Heading size="md">Courses.</Heading> */}
-
-
-      <Stack direction={{ base: "column", md: "row" }} spacing={3}>
+      <Stack direction={{ base: "column", md: "row" }} spacing={3} borderBottom="2px black">
         {Tabs.map(({ label, color, textShadow, lightColor }) => (
           <Button
             key={label}

@@ -3,7 +3,7 @@ import { CgArrowRight } from "react-icons/cg";
 
 import { BlogPost } from "../types/blog-post";
 import BlogPostCard from "../blog-post-card";
-// import Link from "../link";
+import Link from "../link";
 
 type Props = {
   posts: BlogPost[];
@@ -12,7 +12,6 @@ type Props = {
 const BlogpostsSection = ({ posts }: Props) => {
   return (
     <VStack as="section" alignItems="flex-start" w="full" spacing={4}>
-      {/* <Heading size="md">Recent blog posts.</Heading> */}
       <List w="full" spacing={{ base: 8, md: 2 }}>
         {posts.map((post) => (
           <ListItem key={post.slug}>
@@ -21,7 +20,7 @@ const BlogpostsSection = ({ posts }: Props) => {
         ))}
       </List>
       <Box>
-        {/* <Link
+        <Link
           display="flex"
           alignItems="center"
           href="/blog"
@@ -38,7 +37,7 @@ const BlogpostsSection = ({ posts }: Props) => {
             transitionProperty="margin-left"
             transitionTimingFunction="ease-out"
           />
-        </Link> */}
+        </Link>
       </Box>
     </VStack>
   );

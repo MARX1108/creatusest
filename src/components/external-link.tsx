@@ -2,7 +2,6 @@ import {
   Link,
   LinkProps,
   Icon,
-  HStack,
   useColorModeValue as mode,
 } from '@chakra-ui/react';
 import { FiArrowUpRight } from 'react-icons/fi';
