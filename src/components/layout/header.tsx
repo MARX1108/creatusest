@@ -9,6 +9,7 @@ import {
 import NextLink from 'next/link';
 import { useContext, useEffect, useState } from 'react';
 import { FiCommand } from 'react-icons/fi';
+import { useRouter } from 'next/router'
 
 
 const Header = () => {
@@ -96,29 +97,33 @@ const Header = () => {
           </Link>
         </NextLink>
         <HStack alignItems="center" spacing={{ base: 0, md: 2 }}>
-          <NextLink href="/" passHref>
-            <Tooltip label={`some text`}>
-              <Button size='sm' variant="ghost"
-              >
+          <NextLink href="/design" passHref>
+
+            <Button as="a" size='sm' variant="ghost"
+            >
+              <Tooltip label={`some text`}>
                 Design
-              </Button>
-            </Tooltip>
+              </Tooltip>
+            </Button>
           </NextLink>
-          <NextLink href="/" passHref>
-            <Tooltip label={`some text`}>
-              <Button size='sm' variant="ghost"
-              >
+
+          <NextLink href="/publications" passHref>
+
+            <Button size='sm' variant="ghost"
+            >
+              <Tooltip label={`some text`}>
                 Publications
-              </Button>
-            </Tooltip>
+              </Tooltip>
+            </Button>
           </NextLink>
-          <NextLink href="/" passHref>
-            <Tooltip label={`some text`}>
-              <Button size='sm' variant="ghost"
-              >
+
+          <NextLink href="/about" passHref>
+            <Button size='sm' variant="ghost"
+            >
+              <Tooltip label={`some text`}>
                 About
-              </Button>
-            </Tooltip>
+              </Tooltip>
+            </Button>
           </NextLink>
           <Tooltip label={`Command Palette (${shortcut})`}>
             <IconButton
