@@ -6,7 +6,6 @@ import HeroImage from '../src/components/main-image'
 import styles from '../styles/Home.module.css'
 import PageTransition from '../src/utils/page_transition'
 import Deck from '../src/components/deck'
-import courses from "../src/data/websites.json"
 import ExternalLink from '../src/components/external-link'
 
 const Home: NextPage = () => {
@@ -46,7 +45,7 @@ const Home: NextPage = () => {
 
       </Stack>
 
-      <Deck courses={courses} />
+      <Deck />
     </PageTransition>
   )
 }

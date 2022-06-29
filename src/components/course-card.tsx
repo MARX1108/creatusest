@@ -26,19 +26,8 @@ const CourseCard = ({
   title,
   description,
   url,
-  live,
   image,
-  progress,
-  expectedLaunch,
 }: Props) => {
-  let courseDomain: string;
-  if (url && url.length > 0) {
-    courseDomain = new URL(url).host;
-  }
-  courseDomain = "";
-
-  const progressTrackColor = mode('blackAlpha.100', 'whiteAlpha.200');
-  const progressSize = useBreakpointValue({ base: '120px', md: '80px' });
 
   return (
     <LinkBox as="article">
@@ -57,18 +46,6 @@ const CourseCard = ({
         <AspectRatio flexShrink={0} w={{ base: 32, md: 20 }} ratio={1}>
           <>
             {image && <Image src={image} alt={title} layout="fill" />}
-            {!live && progress && (
-              <CircularProgress
-                color="purple.500"
-                size={progressSize}
-                trackColor={progressTrackColor}
-                value={progress}
-              >
-                <CircularProgressLabel fontSize="lg">
-                  {progress}%
-                </CircularProgressLabel>
-              </CircularProgress>
-            )}
           </>
         </AspectRatio>
         <VStack spacing={3}>
@@ -82,33 +59,14 @@ const CourseCard = ({
               <Heading fontWeight="semibold" size="md">
                 {title}
               </Heading>
-              {courseDomain && (
+              {url && (
                 <LinkOverlay as={ExternalLink} href={url}>
                   <Text color="inherit" fontSize="sm">
-                    {courseDomain}
+                    {url}
                   </Text>
                 </LinkOverlay>
               )}
-              {!live && (
-                <LinkOverlay href={`/course/${id}/subscribe`}>
-                  <HStack>
-                    <Text color="purple.500" fontSize="sm">
-                      Get notified
-                    </Text>
-                    <Icon
-                      as={FiArrowUpRight}
-                      display="inline"
-                      color={mode('gray.700', 'white')}
-                    />
-                  </HStack>
-                </LinkOverlay>
-              )}
             </Stack>
-            {expectedLaunch && (
-              <Text alignSelf="flex-start" color="gray.500" fontSize="sm">
-                Expected launch: {expectedLaunch}
-              </Text>
-            )}
           </VStack>
           <Text fontSize="sm">{description}</Text>
         </VStack>

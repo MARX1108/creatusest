@@ -1,18 +1,7 @@
-import { Course } from "./types/course";
-import { VStack, List, ListItem, Button, Stack, Box, Icon } from "@chakra-ui/react";
-import CourseCard from "./course-card";
+import { VStack, Button, Stack } from "@chakra-ui/react";
 import { useState } from "react";
-import BlogPostCard from "./post-card";
-import Link from "./link";
 
-import posts from "../data/research.json"
-import { CgArrowRight } from "react-icons/cg";
-
-
-
-type Props = {
-  courses: Course[];
-};
+import DeckContent from "./deck-content"
 
 type Tab = {
   label: string;
@@ -25,7 +14,7 @@ const Tabs: Tab[] = [
   {
     // href: TWITTER_PROFILE,
     label: "Websites",
-    color: "twitter",
+    color: "rgba(29,161, 242,1)",
     lightColor: "rgba(29,161, 242,0.40)",
     textShadow: "2px 2px 7px rgba(29,161, 242,0.40)",
   },
@@ -43,17 +32,10 @@ const Tabs: Tab[] = [
     lightColor: "rgba(128, 90, 213, 0.49)",
     textShadow: "2px 2px 7px rgba(128, 90, 213, 0.49)",
   },
-  {
-    // href: TWITCH_CHANNEL,
-    label: "Highlights",
-    color: "Gray.500",
-    lightColor: "rgba(0,0,0,0.40)",
-    textShadow: "2px 2px 7px rgba(128, 90, 213, 0.49)",
-  },
 ];
 
 
-const Deck = ({ courses }: Props) => {
+const Deck = () => {
   const [currTab, setTab] = useState(Tabs[0].label)
   return (
 
@@ -70,62 +52,32 @@ const Deck = ({ courses }: Props) => {
             textShadow="none"
             _hover={{
               color: color,
-              fontSize: "1.1rem",
+              // fontSize: "1.1rem",
               textShadow: textShadow,
-              fontWeight: "black",
-              transition: "all 0.5s ease-in-out"
+              // fontWeight: "black",
+              // transition: "all 0.25s ease-in-out"
             }}
             _focus={{
               border: "none",
             }}
-            // href={href}
-            // target="_blank"
             onClick={() => setTab(label)}
             variant="ghost"
             transition="all 0.5s ease-in-out"
           >
             {label}
           </Button>
-        ))}
-      </Stack> <List spacing={6}>
-        {
-          currTab === Tabs[0].label ? <>
-            {courses.map((course) => (
-              <ListItem key={course.url}>
-                <CourseCard {...course} />
-              </ListItem>
-            ))}</>
-            : <>{
-              posts.map((post) => (
-                <ListItem key={post.slug}>
-                  <BlogPostCard {...post} />
-                </ListItem>
-              ))
-            }
-            </>
+        ))}  <Button
+          justifyContent={{ base: "flex-start", md: "center" }}
+          color="gray.900"
+          fontWeight="black"
+          textShadow="none"
+          variant="ghost"
 
-        }
-      </List>
-      <Box>
-        <Link
-          display="flex"
-          alignItems="center"
-          href="/blog"
-          ml={{ base: 0, md: 4 }}
-          role="group"
         >
-          Read all articles
-          <Icon
-            as={CgArrowRight}
-            ml={1}
-            color="purple.500"
-            _groupHover={{ ml: 3 }}
-            transitionDuration="slow"
-            transitionProperty="margin-left"
-            transitionTimingFunction="ease-out"
-          />
-        </Link>
-      </Box>
+          Highlights
+        </Button>
+      </Stack>
+      <DeckContent tab={currTab} />
     </VStack>
   );
 };
