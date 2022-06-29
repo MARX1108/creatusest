@@ -14,10 +14,10 @@ import {
   useColorModeValue as mode,
 } from '@chakra-ui/react';
 
-import { Course } from '../types/course';
-import ExternalLink from '../external-link';
+import { Course } from './types/course';
+import ExternalLink from './external-link';
 import { FiArrowUpRight } from 'react-icons/fi';
-import Image from '../image';
+import Image from './image';
 
 type Props = Course;
 
